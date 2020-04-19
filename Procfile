@@ -1,1 +1,1 @@
-web: gunicorn skin:app
+web: gunicorn app:skin

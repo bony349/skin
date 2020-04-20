@@ -20,7 +20,7 @@ def index():
     if (prediction == 0):
         return ("Skin Disease is vitiligo")
     elif (prediction == 1):
-        return ("Deployed ")
+        return ("Mario Has Deployeeed and this prediction is Psoriasis ")
     elif (prediction == 2):
         return ("Skin Disease is melanoma")
 

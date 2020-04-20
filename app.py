@@ -1,12 +1,12 @@
 from helper import *
 from flask import Flask
 app = Flask(__name__)
-
+from PIL import Image
 
 @app.route('/')
 def index():
     new_test = []  # new images
-
+    img = Image.open('psoriasis.jpg')
     resized_img = resize(img, (128, 64))
     fd_img, hog_img = hog(resized_img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualize=True,
                           multichannel=True)

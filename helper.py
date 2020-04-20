@@ -1,6 +1,6 @@
 # This File contains all library for concept dry -> don't repeat your self
 import os
-import cv2
+
 import pickle
 import numpy as np
 from sklearn import svm
@@ -27,11 +27,3 @@ def save_model(model, model_name='model'):  # giving defualt name for the model
     model_name = model_name
     pickle.dump(model, open(model_name, 'wb'))
 
-
-def load_images_from_folder(folder):
-    images = []
-    for filename in os.listdir(folder):
-        img = cv2.imread(os.path.join(folder, filename))
-        if img is not None:
-            images.append(img)
-    return images

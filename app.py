@@ -1,7 +1,5 @@
 import PIL
 
-from cv2 import cv2
-
 from helper import *
 from flask import Flask, request, render_template
 

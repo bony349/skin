@@ -30,8 +30,7 @@ def index():
 @app.route('/RequestImageWithMetadata', methods=['POST'])
 def post():
     new_test = []
-    request_data = request.form['some_text']
-    print(request_data)
+
     imagefile = request.files.get('imagefile', '')
     img = Image.open(imagefile)
     resized_img = img.resize((128, 64), PIL.Image.ANTIALIAS)

@@ -1,5 +1,5 @@
 import PIL
-import jsonpickle as jsonpickle
+
 from cv2 import cv2
 
 from helper import *

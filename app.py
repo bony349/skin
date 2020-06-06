@@ -7,13 +7,15 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 from PIL import Image
 
-
+svm_model = load_model('SVM.sav')
 @app.route('/')
 def index():
     new_test = []  # new images
-    img = Image.open('AUG_0_0.jpeg')
-    #img = cv2.imread("AUG_0_0.jpeg")
-    resized_img = resize(img,(128,64))
+
+    pil_image = PIL.Image.open("AUG_0_0.jpeg").convert('RGB')
+    open_cv_image = numpy.array(pil_image)
+    open_cv_image = open_cv_image[:, :, ::-1].copy()
+    resized_img = resize(open_cv_image, (128, 64))
 
     fd_img, hog_img = hog(resized_img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualize=True,
                           multichannel=True)
@@ -43,7 +45,7 @@ def post():
                           multichannel=True)
     new_test.append(fd_img)
 
-    svm_model = load_model('SVM.sav')
+
     prediction = svm_model.predict(new_test)
     if (prediction == 0):
         return ("Skin Disease is vitiligo")

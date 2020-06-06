@@ -1,4 +1,5 @@
 import PIL
+import numpy
 
 from helper import *
 from flask import Flask, request, render_template
@@ -10,8 +11,9 @@ from PIL import Image
 @app.route('/')
 def index():
     new_test = []  # new images
-    img = Image.open('psoriasis.jpg')
-    resized_img = img.resize((128, 64), PIL.Image.ANTIALIAS)
+    img = Image.open('AUG_0_0.jpeg')
+    #img = cv2.imread("AUG_0_0.jpeg")
+    resized_img = resize(img,(128,64))
 
     fd_img, hog_img = hog(resized_img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualize=True,
                           multichannel=True)
@@ -32,8 +34,10 @@ def post():
     new_test = []
 
     imagefile = request.files.get('imagefile', '')
-    img = Image.open(imagefile)
-    resized_img = img.resize((128, 64), PIL.Image.ANTIALIAS)
+    pil_image = PIL.Image.open(imagefile).convert('RGB')
+    open_cv_image = numpy.array(pil_image)
+    open_cv_image = open_cv_image[:, :, ::-1].copy()
+    resized_img = resize(open_cv_image,(128,64))
 
     fd_img, hog_img = hog(resized_img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), visualize=True,
                           multichannel=True)

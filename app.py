@@ -30,8 +30,7 @@ def index():
         return ("Mario Has Deployeeed and this prediction is Psoriasis ")
     elif (prediction == 2):
         return ("Skin Disease is melanoma")
-    else
-        return ("Non")
+    
 
 
 @app.route('/RequestImageWithMetadata', methods=['POST'])

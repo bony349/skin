@@ -12,7 +12,7 @@ svm_model = load_model('SVM.sav')
 def index():
     new_test = []  # new images
 
-    pil_image = PIL.Image.open("Screenshot_1.png").convert('RGB')
+    pil_image = PIL.Image.open("download.jpg").convert('RGB')
     open_cv_image = numpy.array(pil_image)
     open_cv_image = open_cv_image[:, :, ::-1].copy()
     resized_img = resize(open_cv_image, (128, 64))
@@ -23,15 +23,15 @@ def index():
     ############################################
     svm_model = load_model('SVM.sav')
     prediction = svm_model.predict(new_test)
-    print(prediction);
-    '''
+    
     if (prediction == 0):
         return ("Skin Disease is vitiligo")
     elif (prediction == 1):
         return ("Mario Has Deployeeed and this prediction is Psoriasis ")
     elif (prediction == 2):
         return ("Skin Disease is melanoma")
-    '''
+    else
+        return ("Non")
 
 
 @app.route('/RequestImageWithMetadata', methods=['POST'])

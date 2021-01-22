@@ -2,7 +2,7 @@ import PIL
 import numpy
 
 from helper import *
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template , jsonify
 
 app = Flask(__name__)
 from PIL import Image
@@ -25,11 +25,11 @@ def index():
     prediction = svm_model.predict(new_test)
     
     if (prediction == 0):
-        return ("Skin Disease is vitiligo")
+        return jsonify("Skin Disease is vitiligo")
     elif (prediction == 1):
-        return ("Mario Has Deployeeed and this prediction is Psoriasis ")
+        return jsonify("Mario Has Deployeeed and this prediction is Psoriasis ")
     elif (prediction == 2):
-        return ("Skin Disease is melanoma")
+        return jsonify("Skin Disease is melanoma")
     
 
 

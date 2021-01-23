@@ -24,12 +24,12 @@ def index():
     svm_model = load_model('SVM.sav')
     prediction = svm_model.predict(new_test)
     
-    if (prediction == 0):
-        return jsonify("Skin Disease is vitiligo")
+     if (prediction == 0):
+        return jsonify({'prediction':'Vitiligo'})
     elif (prediction == 1):
-        return jsonify("Mario Has Deployeeed and this prediction is Psoriasis ")
+        return jsonify({'prediction':'Psoriasis'})
     elif (prediction == 2):
-        return jsonify("Skin Disease is melanoma")
+        return jsonify({'prediction':'Melanoma'})
     
 
 

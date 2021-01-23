@@ -50,11 +50,11 @@ def post():
 
     prediction = svm_model.predict(new_test)
     if (prediction == 0):
-        return jsonify("Vitiligo")
+        return jsonify("{'prediction':'Vitiligo'}")
     elif (prediction == 1):
-        return jsonify("Psoriasis ")
+        return jsonify("{'prediction':'Psoriasis'}")
     elif (prediction == 2):
-        return jsonify("Melanoma")
+        return jsonify("{'prediction':'Melanoma'}")
 
 
 if __name__ == '__main__':

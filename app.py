@@ -32,7 +32,7 @@ def index():
         return jsonify({'prediction':'Melanoma'})
     
 
-
+#API Route 
 @app.route('/RequestImageWithMetadata', methods=['POST'])
 def post():
     new_test = []
